@@ -5,15 +5,21 @@ const rootDir=require('../util/path');
 
 const router = express.Router();
 
-const productsController = require('../controllers/products');
+const adminController = require('../controllers/admin');
 
 
 
 // /admin/add-product => GET
-router.get('/add-product', productsController.getAddProduct);
+router.get('/add-product', adminController.getAddProduct);
+
+//admin/products=>GET
+
+router.get('/products',adminController.getProducts);
 
 // /admin/add-product => POST
-router.post('/add-product', productsController.postAddProduct);
+router.post('/add-product', adminController.postAddProduct);
+
+
 
 // // /admin/add-product => GET
 // router.get('/add-product', (req, res, next) => {
