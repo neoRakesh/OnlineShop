@@ -20,10 +20,15 @@ exports.getProducts = (req, res, next) => {
 exports.getProduct=(req,res,next)=>{
   const prodId=req.params.productId;
   console.log(prodId);
-  Product.findById(prodId, product=>{
-    console.log(product);
+  Product.findById(prodId, products=>{
+   // console.log(product);
+   res.render ('shop/product-details',{
+     product : products,
+     pageTitle:products.title,
+     path:'/product'
+    });
   });
-  res.redirect('/');
+
 }
 
 exports.getIndex = (req,res,next) =>{
