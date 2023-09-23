@@ -22,7 +22,7 @@ router.post('/add-product', adminController.postAddProduct);
 //Edit admin Product
 router.get('/edit-product/:productId',adminController.getEditProduct);
 
-router.get('/edit-product');
+router.post('/edit-product',adminController.postEditProduct);
 
 
 
