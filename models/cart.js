@@ -31,10 +31,30 @@ module.exports = class Cart{
                 cart.products=[...cart.products,updatedProduct];
             }
 
-            cart.totalPrice=cart.totalPrice + productPrice;
+            cart.totalPrice=(parseInt(cart.totalPrice) + parseInt(productPrice));
             fs.writeFile(p,JSON.stringify(cart),err => {
                 console.log(err);
             })
         });
     }
+//deleting the cart item that were deleted 
+    static deleteProduct(id, productPrice){
+        fs.readFile(p,(err,fileContent) => {
+            if(err){
+                return;
+            }
+            const updateCart={...JSON.parse(fileContent)};
+            const product= updateCart.products.find(prod => prod.id ===id);
+            const productQty=product.qty;
+            console.log(productQty);
+            updateCart.products=updateCart.products.filter(prod => prod.id !== id);
+            updateCart.totalPrice= updateCart.totalPrice - productPrice*productQty;
+
+            fs.writeFile(p,JSON.stringify(updateCart),err => {
+                console.log(err);
+            });
+        });
+    
+    }
 }
+
