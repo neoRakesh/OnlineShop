@@ -15,6 +15,9 @@ main {
   margin: auto;
 }
 
+.image{
+  height: 20rem;
+}
 
 .centered{
   text-align: center;
